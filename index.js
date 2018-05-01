@@ -1,5 +1,13 @@
 'use strict';
 
+
+//Webhook é o núcleo da experiência do bot do Messeger. Aqui é onde as mensagens 
+// são recebidas, processadas e enviadas.
+
+
+
+
+
 // Imports dependencies and set up http server
 const
   express = require('express'),
