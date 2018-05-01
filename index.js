@@ -15,7 +15,7 @@ const
   app = express().use(bodyParser.json()); // creates express http server
 
 // Sets server port and logs message on success
-app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
+app.listen(process.env.PORT || 3000, () => console.log('webhook is listening'));
 
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {  
@@ -47,7 +47,7 @@ app.post('/webhook', (req, res) => {
 app.get('/webhook', (req, res) => {
 
   // Your verify token. Should be a random string.
-  let VERIFY_TOKEN = "modnargnirtseb"
+  let VERIFY_TOKEN = "EAAGIBRjmHqwBAAD3qFRFx6mzCJrKcIMZBTzvszXXlXhSZCdrE2ZA0h1pGnqIsRUX2Pded42ih7ZAFbvNT8diObGPVvtgoA7s03FQoxLmRGSytOZCZCPFHz2wXXFjhphA3jP97YpkKZA7Qo6Joz3tftRKGAxAxcJOUoFFxzyzJ1mO7ijvqXnFvfX"
     
   // Parse the query params
   let mode = req.query['hub.mode'];
