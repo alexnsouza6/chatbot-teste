@@ -4,10 +4,6 @@
 //Webhook é o núcleo da experiência do bot do Messeger. Aqui é onde as mensagens 
 // são recebidas, processadas e enviadas.
 
-
-
-
-
 // Imports dependencies and set up http server
 const
   express = require('express'),
@@ -25,13 +21,14 @@ app.post('/webhook', (req, res) => {
   // Checks this is an event from a page subscription
   if (body.object === 'page') {
 
-    // Iterates over each entry - there may be multiple if batched
     body.entry.forEach(function(entry) {
-
-      // Gets the message. entry.messaging is an array, but 
-      // will only ever contain one message, so we get index 0
+      // Gets the body of the webhook event
       let webhook_event = entry.messaging[0];
       console.log(webhook_event);
+    
+      // Get the sender PSID
+      let sender_psid = webhook_event.sender.id;
+      console.log('Sender PSID: ' + sender_psid);
     });
 
     // Returns a '200 OK' response to all requests
