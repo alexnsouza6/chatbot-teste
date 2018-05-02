@@ -1,5 +1,5 @@
 'use strict';
-
+require('./app.js');
 
 //Webhook é o núcleo da experiência do bot do Messeger. Aqui é onde as mensagens 
 // são recebidas, processadas e enviadas.
