@@ -1,7 +1,7 @@
 const request = require('request');
 
 // Handles messages events
-exports.function handleMessage(sender_psid, received_message) {
+exports handleMessage = function(sender_psid, received_message) {
 
   let response;
 
@@ -19,12 +19,12 @@ exports.function handleMessage(sender_psid, received_message) {
 }
 
 // Handles messaging_postbacks events
-function handlePostback(sender_psid, received_postback) {
+exports handlePostback = function(sender_psid, received_postback) {
 
 }
 
 // Sends response messages via the Send API
-exports.function callSendAPI(sender_psid, response) {
+exports.callSendAPI = function(sender_psid, response) {
   // Construct the message body
   let request_body = {
     "recipient": {
