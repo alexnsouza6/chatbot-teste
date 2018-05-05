@@ -1,4 +1,3 @@
-const exports = module.exports = {}; 
 const request = require('request');
 
 // Handles messages events
