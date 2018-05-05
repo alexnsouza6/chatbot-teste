@@ -1,5 +1,5 @@
 'use strict';
-require('./app.js');
+var callapi = require('./app.js');
 
 //Webhook é o núcleo da experiência do bot do Messeger. Aqui é onde as mensagens 
 // são recebidas, processadas e enviadas.
@@ -33,9 +33,9 @@ app.post('/webhook', (req, res) => {
       // Check if the event is a message or postback and
       // pass the event to the appropriate handler function
       if (webhook_event.message) {
-        handleMessage(sender_psid, webhook_event.message);        
+        callapi.handleMessage(sender_psid, webhook_event.message);        
       } else if (webhook_event.postback) {
-        handlePostback(sender_psid, webhook_event.postback);
+        callapi.handlePostback(sender_psid, webhook_event.postback);
       }
     });
 
