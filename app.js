@@ -13,9 +13,9 @@ exports.handleMessage = function(sender_psid, received_message) {
       "text": `You sent the message: "${received_message.text}". Now send me an image!`
     }
   }  
-  
+  console.log("This is a test");
   // Sends the response message
-  this.callSendAPI(sender_psid, response);
+  callSendAPI(sender_psid, response);
 }
 
 // Handles messaging_postbacks events
@@ -24,7 +24,7 @@ exports.handlePostback = function(sender_psid, received_postback) {
 }
 
 // Sends response messages via the Send API
-exports.callSendAPI = function(sender_psid, response) {
+callSendAPI = function(sender_psid, response) {
   // Construct the message body
   let request_body = {
     "recipient": {
