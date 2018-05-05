@@ -1,7 +1,7 @@
 const request = require('request');
 
 // Handles messages events
-exports handleMessage = function(sender_psid, received_message) {
+exports.handleMessage = function(sender_psid, received_message) {
 
   let response;
 
@@ -19,7 +19,7 @@ exports handleMessage = function(sender_psid, received_message) {
 }
 
 // Handles messaging_postbacks events
-exports handlePostback = function(sender_psid, received_postback) {
+exports.handlePostback = function(sender_psid, received_postback) {
 
 }
 
