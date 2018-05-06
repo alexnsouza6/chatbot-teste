@@ -36,10 +36,10 @@ app.post('/webhook', (req, res) => {
         callapi.handlePostback(sender_psid, webhook_event.postback);
       }
     });
-    console.log("This is a console log")
     // Returns a '200 OK' response to all requests
     res.status(200).send('EVENT_RECEIVED');
   } else {
+    console.log("Page not found");
     // Returns a '404 Not Found' if event is not from a page subscription
     res.sendStatus(404);
   }
