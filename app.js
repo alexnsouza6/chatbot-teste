@@ -47,7 +47,19 @@ exports.handleMessage = function(sender_psid, received_message) {
 
 // Handles messaging_postbacks events
 exports.handlePostback = function(sender_psid, received_postback) {
+  let response;
+  
+  // Get the payload for the postback
+  let payload = received_postback.payload;
 
+  // Set the response based on the postback payload
+  if (payload === 'yes') {
+    response = { "text": "Thanks!" }
+  } else if (payload === 'no') {
+    response = { "text": "Oops, try sending another image." }
+  }
+  // Send the message to acknowledge the postback
+  callSendAPI(sender_psid, response);
 }
 
 // Sends response messages via the Send API
@@ -74,3 +86,12 @@ callSendAPI = function(sender_psid, response) {
   }); 
 
 }
+
+
+// A postback originates from the client browser. 
+// Usually one of the controls on the page will be manipulated
+// by the user (a button clicked or dropdown changed, etc), 
+// and this control will initiate a postback. 
+// The state of this control, plus all other controls on the page,
+// (known as the View State) is Posted Back to the web server.
+
