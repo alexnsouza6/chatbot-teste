@@ -21,13 +21,16 @@ app.post('/webhook', (req, res) => {
   // Checks this is an event from a page subscription
   if (body.object === 'page') {
 
+
     body.entry.forEach(function(entry) {
       // Gets the body of the webhook event
       let webhook_event = entry.messaging[0];
     
       // Get the sender PSID
       let sender_psid = webhook_event.sender.id;
-      console.log(webhook_event.sender);
+      
+      //Make a request to get user infos
+      callapi.fetchUserInfo(sender_psid);
 
       // Check if the event is a message or postback and
       // pass the event to the appropriate handler function
