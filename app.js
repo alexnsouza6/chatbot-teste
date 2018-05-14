@@ -8,7 +8,7 @@ exports.fetchUserInfo = (sender_psid) => {
       let greeting;
 
       greeting = {
-        "text": `Hello, ${response.first_name}! How are you doing?`
+        "text": `Hello, ${response.data.first_name}! How are you doing?`
       }
 
       console.log(greeting);
