@@ -41,7 +41,7 @@ app.post('/webhook', (req, res) => {
       let sender_psid = webhook_event.sender.id;
       
       //Make a request to get user infos
-      callapi.fetchUserInfo(sender_psid);
+      //callapi.fetchUserInfo(sender_psid);
 
       // Check if the event is a message or postback and
       // pass the event to the appropriate handler function
