@@ -12,8 +12,8 @@ exports.fetchUserInfo = (sender_psid) => {
       }
 
       console.log(greeting);
-      
-      callSendAPI(sender_psid, greeting);
+
+      //callSendAPI(sender_psid, greeting);
     })
 }
 
