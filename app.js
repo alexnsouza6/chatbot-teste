@@ -5,9 +5,7 @@ exports.fetchUserInfo = (sender_psid) => {
   request
     .get(`https://graph.facebook.com/v2.6/${sender_psid}?fields=first_name,last_name&access_token=${PAGE_ACCESS_TOKEN}`)
     .on('response', function(response){
-      console.log("THIS IS A TEST WITH A RESPONSE")
-      console.log(response.statusCode)
-      console.log(response)
+        console.log(response.first_name);
     })
 }
 
