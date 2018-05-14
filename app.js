@@ -3,7 +3,7 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
 exports.fetchUserInfo = (sender_psid) => {
   request
-    .get(`https://graph.facebook.com/v2.6/"${sender_psid}"?fields=first_name,last_name,profile_pic&access_token="${PAGE_ACCESS_TOKEN}"`)
+    .get(`https://graph.facebook.com/v2.6/"${sender_psid}"?fields=first_name,last_name&access_token="${PAGE_ACCESS_TOKEN}"`)
     .on('response', function(response){
       console.log("THIS IS A TEST WITH A RESPONSE")
       console.log(response.statusCode)
