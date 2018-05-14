@@ -16,9 +16,7 @@ app.listen(process.env.PORT || 3000, () => console.log('webhook is listening'));
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {  
  
-  let body = req.body;
-
-  (function(d, s, id){
+  let body = req.body(function(d, s, id){
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) {return;}
     js = d.createElement(s); js.id = id;
