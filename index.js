@@ -16,21 +16,11 @@ app.listen(process.env.PORT || 3000, () => console.log('webhook is listening'));
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {  
  
-  let body = req.body.(function(d, s, id){
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {return;}
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'Messenger'));
-
-  window.extAsyncInit = function() {
-  // the Messenger Extensions JS SDK is done loading 
-    console.log("TESTETESTETESTETESTETESTETESTETESTETESTETESTETESTETESTETESTETESTETESTE")
-  };
+  let body = req.body;
 
   // Checks this is an event from a page subscription
   if (body.object === 'page') {
+    
     body.entry.forEach(function(entry) {
       // Gets the body of the webhook event
       let webhook_event = entry.messaging[0];
@@ -39,7 +29,7 @@ app.post('/webhook', (req, res) => {
       let sender_psid = webhook_event.sender.id;
       
       //Make a request to get user infos
-      //callapi.fetchUserInfo(sender_psid);
+      callapi.fetchUserInfo(sender_psid);
 
       // Check if the event is a message or postback and
       // pass the event to the appropriate handler function
