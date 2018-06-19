@@ -2,7 +2,36 @@ const request = require('request');
 const axios = require('axios');
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
-exports.fetchUserInfo = (sender_psid) => {
+sendGreetingMessage = () => {
+  response = {
+      "attachment": {
+        "type": "template",
+        "payload": {
+          "template_type": "generic",
+          "elements": [{
+            "title": "Is this the right picture?",
+            "subtitle": "Tap a button to answer.",
+            "image_url": attachment_url,
+            "buttons": [
+              {
+                "type": "postback",
+                "title": "Yes!",
+                "payload": "yes",
+              },
+              {
+                "type": "postback",
+                "title": "No!",
+                "payload": "no",
+              }
+            ],
+        }]
+      }
+    }
+  }
+}
+
+
+fetchUserInfo = (sender_psid) => {
   axios.get(`https://graph.facebook.com/v2.6/${sender_psid}?fields=first_name,last_name&access_token=${PAGE_ACCESS_TOKEN}`)
     .then(response => {
       let greeting;
@@ -18,7 +47,7 @@ exports.fetchUserInfo = (sender_psid) => {
 }
 
 // Handles messages events
-exports.handleMessage = function(sender_psid, received_message) {
+handleMessage = function(sender_psid, received_message) {
 
   let response;
 
@@ -63,7 +92,7 @@ exports.handleMessage = function(sender_psid, received_message) {
 }
 
 // Handles messaging_postbacks events
-exports.handlePostback = function(sender_psid, received_postback) {
+handlePostback = function(sender_psid, received_postback) {
   let response;
   
   // Get the payload for the postback
@@ -130,7 +159,6 @@ getUserInfo = function(sender_psid, response) {
 }
 
 
-
 // A postback originates from the client browser. 
 // Usually one of the controls on the page will be manipulated
 // by the user (a button clicked or dropdown changed, etc), 
@@ -138,3 +166,9 @@ getUserInfo = function(sender_psid, response) {
 // The state of this control, plus all other controls on the page,
 // (known as the View State) is Posted Back to the web server.
 
+export default {
+  handlePostback,
+  handleMessage,
+  fetchUserInfo,
+  sendGreetingMessage
+};
